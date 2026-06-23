@@ -2,5 +2,30 @@
   "name": "technical-decision-record",
   "version": "1.0.0",
   "description": "Record technical decisions, alternatives, trade-offs, and verification plans as reusable Markdown decision records.",
-  "skills": "./skills/"
+  "author": {
+    "name": "electrohyun",
+    "email": "dev.electrohyun@gmail.com",
+    "url": "https://github.com/electrohyun"
+  },
+  "repository": "https://github.com/electrohyun/technical-decision-record",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skill",
+    "technical-decision",
+    "decision-record",
+    "documentation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Technical Decision Record",
+    "shortDescription": "Turn technical choices into reusable decision records.",
+    "longDescription": "A Codex skill for documenting technical decisions, alternatives, trade-offs, evidence, and follow-up plans as reusable Markdown records.",
+    "developerName": "electrohyun",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/electrohyun/technical-decision-record",
+    "brandColor": "#FAFAFA",
+    "logo": "./assets/logo.png"
+  }
 }
