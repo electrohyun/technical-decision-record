@@ -1,0 +1,6 @@
+{
+  "name": "technical-decision-record",
+  "version": "1.0.0",
+  "description": "Record technical decisions, alternatives, trade-offs, and verification plans as reusable Markdown decision records.",
+  "skills": "./skills/"
+}
