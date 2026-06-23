@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="1027" height="1027" alt="Technical Decision Record Skill Logo" src="https://github.com/user-attachments/assets/3af14b51-33a3-4944-936a-4748d2aaffd7" />
+    <img width="400" alt="Technical Decision Record Skill Logo" src="https://github.com/user-attachments/assets/3af14b51-33a3-4944-936a-4748d2aaffd7" />
 </p>
 
 <h1 align="center" style="border-bottom: none;">
