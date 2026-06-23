@@ -10,6 +10,13 @@
   A Codex Skill for recording technical decisions as reusable Markdown decision records.
 </p>
 
+<p align="center">
+  <a href="./README.md">English</a> |
+  <a href="./README.ko.md">한국어</a> |
+  <a href="./README.ja.md">日本語</a> |
+  <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
 ## Overview
 
 `technical-decision-record` helps turn technical choices into reusable decision records.
@@ -25,16 +32,72 @@ It is useful when you want to document:
 
 This skill is designed for project retrospectives, issue comments, pull request descriptions, architecture notes, portfolio writing, blog posts, and technical interview preparation.
 
+## Installation
+
+Add this repository as a Codex plugin marketplace.
+
+```bash
+codex plugin marketplace add electrohyun/technical-decision-record --ref main
+```
+
+Then install the plugin.
+
+```bash
+codex plugin add technical-decision-record@technical-decision-record
+```
+
+Restart Codex, then check that the skill is available.
+
+```txt
+/skills
+```
+
+You should see:
+
+```txt
+technical-decision-record
+```
+
+## Local installation
+
+If you cloned this repository locally, you can add it as a local marketplace instead.
+
+```bash
+codex plugin marketplace add /path/to/technical-decision-record
+```
+
+Then install the plugin.
+
+```bash
+codex plugin add technical-decision-record@technical-decision-record
+```
+
+## Updating
+
+Pull the latest changes from the repository, then reinstall the plugin if needed.
+
+```bash
+git pull
+codex plugin remove technical-decision-record
+codex plugin add technical-decision-record@technical-decision-record
+```
+
 ## Plugin structure
 
 ```txt
-technical-decision-record-plugin/
+technical-decision-record/
 ├─ .codex-plugin/
 │  └─ plugin.json
+├─ .agents/
+│  └─ plugins/
+│     └─ marketplace.json
 ├─ skills/
 │  └─ technical-decision-record/
 │     └─ SKILL.md
-└─ README.md
+├─ README.md
+├─ README.ko.md
+├─ README.ja.md
+└─ README.zh-CN.md
 ```
 
 ## Usage
@@ -44,16 +107,16 @@ Mention the skill in Codex when you want to record a technical decision.
 ```txt
 $technical-decision-record
 
-이번 #45 이슈는 서버 데이터 로딩 구조는 이번 범위에서 크게 바꾸지 않고,
-먼저 사운드와 모달 코드를 lazy loading하는 방향으로 가자.
+For issue #45, let's keep the server data loading structure mostly unchanged for now,
+and first move the sound and modal-related code to lazy loading.
 
-이미지 priority/sizes는 실제 LCP element를 확인한 뒤,
-핵심 이미지에만 적용하자.
+For image priority and sizes, let's verify the actual LCP element first,
+then apply them only to the critical images.
 
-개선 여부는 Lighthouse Mobile Navigation의 LCP breakdown과
-unused JavaScript 항목으로 확인하는 게 좋겠어.
+We should verify the improvement using the Lighthouse Mobile Navigation LCP breakdown
+and the unused JavaScript section.
 
-이 방향으로 기술 의사결정 문서 작성해줘.
+Please write a technical decision record in Markdown based on this direction.
 ```
 
 ## Example output
@@ -61,35 +124,35 @@ unused JavaScript 항목으로 확인하는 게 좋겠어.
 ```md
 ## Decision summary
 
-`/lobby` 초기 렌더링 성능 개선을 위해 서버 데이터 로딩 구조는 이번 이슈 범위에서 제외하고, 사운드와 모달 코드를 lazy loading하는 방향으로 결정했다.
+For `/lobby` initial rendering performance, we decided not to significantly change the server data loading structure in this issue. Instead, we will first lazy load the sound and modal-related code.
 
-이미지 `priority`와 `sizes`는 실제 LCP element를 확인한 뒤 핵심 이미지에만 적용한다.
+Image `priority` and `sizes` will be applied only to critical images after verifying the actual LCP element.
 
 ## Problem
 
-`/lobby` 초기 렌더링에서 client bundle, 이미지 로딩 우선순위, 모달 코드 로딩 시점이 성능 저하 후보로 확인되었다.
+The `/lobby` initial rendering path had several potential performance bottlenecks, including the client bundle size, image loading priority, and the timing of modal code loading.
 
 ## Chosen solution
 
-- 사운드 관련 코드는 초기 bundle에서 분리한다.
-- 모달 내부 코드는 실제로 모달이 열릴 때 로드한다.
-- 이미지 `priority`와 `sizes`는 실제 LCP element를 확인한 뒤 적용한다.
-- 서버 데이터 로딩 구조는 이번 이슈에서 크게 변경하지 않는다.
+- Move sound-related code out of the initial bundle.
+- Load modal-related code only when the modal is actually opened.
+- Apply image `priority` and `sizes` only after verifying the actual LCP element.
+- Avoid major changes to the server data loading structure in this issue.
 
 ## Trade-offs accepted
 
-초기 렌더링 비용은 줄일 수 있지만, 사용자가 모달이나 사운드 기능을 처음 사용할 때 약간의 지연이 생길 수 있다.
+This can reduce the initial rendering cost, but it may introduce a small delay the first time the user opens a modal or uses a sound-related feature.
 
 ## Evidence
 
-변경 전후 Lighthouse Mobile Navigation 결과를 비교한다.
+Compare Lighthouse Mobile Navigation results before and after the change.
 
-특히 다음 항목을 확인한다.
+Focus on the following items:
 
 - LCP breakdown
 - unused JavaScript
-- 실제 LCP element
-- client bundle 변화
+- actual LCP element
+- client bundle changes
 ```
 
 ## When to use
