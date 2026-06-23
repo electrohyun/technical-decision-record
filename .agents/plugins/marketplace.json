@@ -1,0 +1,21 @@
+{
+  "name": "technical-decision-record",
+  "interface": {
+    "displayName": "Technical Decision Record"
+  },
+  "plugins": [
+    {
+      "name": "technical-decision-record",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/electrohyun/technical-decision-record.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
