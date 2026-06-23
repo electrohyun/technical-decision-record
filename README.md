@@ -1,3 +1,7 @@
+<p align="center">
+    <img width="300" alt="Technical Decision Record Skill Logo" src="https://github.com/user-attachments/assets/e7d156c6-0439-4680-a174-5718eeb7ddfe" />
+</p>
+
 <h1 align="center" style="border-bottom: none;">
     <code>Technical Decision Record Skill</code>
 </h1>
